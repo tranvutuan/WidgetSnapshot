@@ -13,7 +13,7 @@ struct SwiftUIView: View {
         VStack {
             Text("Hello, World!").background(Color.green)
         }
-        .padding(.all, 10)
+        .padding(.all, 5)
         .background(Color.orange)
     }
 }

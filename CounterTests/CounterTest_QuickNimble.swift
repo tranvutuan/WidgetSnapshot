@@ -6,28 +6,25 @@
 //  Copyright © 2021 Point-Free. All rights reserved.
 //
 
-import XCTest
+@testable import Counter
+import SwiftUI
+@testable import PrimeWidgetExtension
+import Quick
+import Nimble
+import Nimble_Snapshots
 
-class CounterTest_QuickNimble: XCTestCase {
+class CounterTest_QuickNimble: QuickSpec {
+    override func spec() {
+        describe("an SwiftUIView") {
+            it("should create a widget view") {
+                let swiftUIView = SwiftUIView()
+                let view = swiftUIView.frame(width: 155, height: 400)
+                let vc = UIHostingController(rootView: view )
+                vc.view.frame = CGRect(x: 0, y: 0, width: 155, height: 155)
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+                expect(vc.view) == recordSnapshot()
+            }
         }
     }
-
 }
+

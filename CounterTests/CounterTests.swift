@@ -5,7 +5,6 @@ import ComposableArchitecture
 import SwiftUI
 @testable import PrimeWidgetExtension
 
-
 extension Snapshotting where Value: UIViewController, Format == UIImage {
   static var windowedImage: Snapshotting {
     return Snapshotting<UIImage, UIImage>.image.asyncPullback { vc in
@@ -34,9 +33,9 @@ class CounterTests: XCTestCase {
 
   func testSnapshots() {
     let swiftUIView = SwiftUIView()
-    let view = swiftUIView.frame(width: 500, height: 100, alignment: .center)
-    let vc = UIHostingController(rootView: view)
-    vc.view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+    let view = swiftUIView.frame(width: 155, height: 400)
+    let vc = UIHostingController(rootView: view )
+    vc.view.frame = CGRect(x: 0, y: 0, width: 155, height: 155)
 
     assertSnapshot(matching: vc, as: .windowedImage)
   }
